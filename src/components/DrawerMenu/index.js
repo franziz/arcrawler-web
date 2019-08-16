@@ -18,9 +18,9 @@ export default function DrawerMenu(){
         <ListItem button>
           <ListItemText primary="XPATH Tools"/>
         </ListItem>
-        <ListItem button>
+        {/* <ListItem button>
           <ListItemText primary="Issue Tracker"/>
-        </ListItem>
+        </ListItem> */}
       </List>
     </Drawer>
   )
