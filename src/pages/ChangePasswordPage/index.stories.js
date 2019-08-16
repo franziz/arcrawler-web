@@ -2,8 +2,8 @@ import React from "react";
 import storyDecorator from "utils/storyDecorator";
 import { storiesOf } from "@storybook/react";
 
-import DrawerMenu from "components/DrawerMenu"
+import ChangePasswordPage from "pages/ChangePasswordPage";
 
-storiesOf("Drawer/Main", module)
+storiesOf("Pages/ChangePasswordPage", module)
   .addDecorator(storyDecorator)
-  .add("default", () => <DrawerMenu/>)
+  .add("default", () => <ChangePasswordPage/>)

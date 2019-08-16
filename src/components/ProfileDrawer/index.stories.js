@@ -2,8 +2,8 @@ import React from "react";
 import storyDecorator from "utils/storyDecorator";
 import { storiesOf } from "@storybook/react";
 
-import DrawerMenu from "components/DrawerMenu"
+import ProfileDrawer from "components/ProfileDrawer"
 
-storiesOf("Drawer/Main", module)
+storiesOf("Drawer/Profile", module)
   .addDecorator(storyDecorator)
-  .add("default", () => <DrawerMenu/>)
+  .add("default", () => <ProfileDrawer/>)
