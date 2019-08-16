@@ -11,20 +11,23 @@ const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar
 }))
 
-function ProfileDrawer(){
+function ProfileDrawer(props){
   const classes = useStyles();
+
+  const handleBackToDashboardClick = () => props.history.push("/dashboard");
+
   return(
     <Drawer className={classes.drawer} variant="permanent" classes={{ paper: classes.drawerPaper }}>
       <div className={classes.toolbar}/>
       <List>
-        <ListItem button>
+        <ListItem onClick={handleBackToDashboardClick} button>
           <ListItemIcon>
             <BackIcon/>
           </ListItemIcon>
           <ListItemText primary="Back to Dashboard"/>
         </ListItem>
         <Divider/>
-        <ListItem button>
+        <ListItem selected={props.match.path === "/changePassword"} button>
           <ListItemText primary="Change Password"/>
         </ListItem>
       </List>

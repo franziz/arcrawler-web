@@ -12,8 +12,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function XpathTestPage(props){
-  const [ url, setUrl ] = React.useState("http://beritajatim.com/peristiwa/dua-kecamatan-di-pamekasan-aman-dari-kekeringan/");
-  const [ xpath, setXpath ] = React.useState("//meta[@property='article:published_time']/@content");
+  const [ url, setUrl ] = React.useState("");
+  const [ xpath, setXpath ] = React.useState("");
   const [ isExtracting, setIsExtracting ] = React.useState(false);
   const [ result, setResult ] = React.useState({});
 
