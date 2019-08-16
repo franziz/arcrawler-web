@@ -70,7 +70,7 @@ export default function XpathTestPage(props){
         <Grid xs={12} item>
           <Grid direction="column" container>
             <Typography variant="overline">Extraction Result</Typography>
-            <Paper className={classes.paper} elevation={4}>
+            <Paper className={classes.paper} elevation={16}>
               <ReactJson name={false} src ={result}/>
             </Paper>
           </Grid>
