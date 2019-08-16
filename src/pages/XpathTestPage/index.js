@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
+import { withSnackbar } from "notistack";
 
 import AppContainer from "components/AppContainer";
 import ReactJson from "react-json-view";
@@ -11,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   circularProgress: { marginRight: theme.spacing(1), color: theme.palette.action.disabled }
 }))
 
-export default function XpathTestPage(props){
+function XpathTestPage(props){
   const [ url, setUrl ] = React.useState("");
   const [ xpath, setXpath ] = React.useState("");
   const [ isExtracting, setIsExtracting ] = React.useState(false);
@@ -20,14 +21,20 @@ export default function XpathTestPage(props){
   const handleChangeUrl = (e) => setUrl(e.target.value);
   const handleChangeXpath = (e) => setXpath(e.target.value);
   const handleExtractClick = async () => {
-    setIsExtracting(true);
-    const jsonResult = await (await fetch(`${process.env.REACT_APP_API_BASE_URL}/v1/xpath/extract`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url, xpath })
-    })).json();
-    setResult(jsonResult.results);
-    setIsExtracting(false);
+    try{
+      setIsExtracting(true);
+      const jsonResult = await (await fetch(`${process.env.REACT_APP_API_BASE_URL}/v1/xpath/extract`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url, xpath })
+      })).json();
+      setResult(jsonResult.results);
+    }catch(err){
+      console.log(err);
+      props.enqueueSnackbar("Ops! something went wrong");
+    }finally{
+      setIsExtracting(false);
+    }
   }
 
   const classes = useStyles();
@@ -80,3 +87,5 @@ export default function XpathTestPage(props){
     </AppContainer>
   )
 }
+
+export default withSnackbar(XpathTestPage);
